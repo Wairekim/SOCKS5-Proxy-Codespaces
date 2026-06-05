@@ -1,8 +1,7 @@
 {
 	"name": "SOCKS5 Proxy Codespaces",
 	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-	"features": {
-		"ghcr.io/devcontainers-extra/features/chisel:1": {}
-	},
-	"postAttachCommand": "chisel server --socks5"
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y microsocks",
+	"postAttachCommand": "microsocks -i 0.0.0.0 -p 1080",
+	"forwardPorts": [1080]
 }
