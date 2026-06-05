@@ -1,6 +1,7 @@
 {
 	"name": "HTTP Proxy Codespaces",
 	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-	"forwardPorts": [1080],
-	"postAttachCommand": "python3 /workspaces/SOCKS5-Proxy-Codespaces/proxy.py"
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y tinyproxy && echo 'User nobody\nGroup nogroup\nPort 1080\nAllow 0.0.0.0/0\nTimeout 600\n' | sudo tee /etc/tinyproxy/tinyproxy.conf",
+	"postAttachCommand": "sudo tinyproxy -d",
+	"forwardPorts": [1080]
 }
