@@ -1,7 +1,6 @@
 {
 	"name": "HTTP Proxy Codespaces",
 	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y tinyproxy && sudo sed -i 's/^Port .*/Port 1080/' /etc/tinyproxy/tinyproxy.conf && sudo sed -i '/^Allow /d' /etc/tinyproxy/tinyproxy.conf && echo 'Allow 0.0.0.0/0' | sudo tee -a /etc/tinyproxy/tinyproxy.conf",
-	"postAttachCommand": "sudo tinyproxy -d",
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y tinyproxy && sudo chmod +x /workspaces/SOCKS5-Proxy-Codespaces/start.sh && /workspaces/SOCKS5-Proxy-Codespaces/start.sh",
 	"forwardPorts": [1080]
 }
